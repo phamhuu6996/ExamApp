@@ -25,6 +25,16 @@ class _QuestionItemState extends State<QuestionItem> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      if(widget.pushQuestion.answerId.isNotEmpty) {
+        controller.sink.add(widget.pushQuestion.answerId[0]);
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
    return Column(
       children: [
