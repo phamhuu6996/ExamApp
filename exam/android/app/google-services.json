@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "979809652776",
+    "firebase_url": "https://exam-f03a2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "exam-f03a2",
+    "storage_bucket": "exam-f03a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979809652776:android:48a4f79b2f16d3275f651d",
+        "android_client_info": {
+          "package_name": "com.phamhuu.exam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979809652776-n81lhgif4o8a924kr85nriqg37bjfok4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.phamhuu.exam",
+            "certificate_hash": "b462e0c5e2905fa393debc6111545017e45d1e0d"
+          }
+        },
+        {
+          "client_id": "979809652776-khsg0bhjde8n3257epju730ckgv2dd0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3ztmm1yShsL35zrri5_6tM5f_oIySbD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979809652776-khsg0bhjde8n3257epju730ckgv2dd0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
