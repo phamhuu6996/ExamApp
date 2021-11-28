@@ -91,10 +91,11 @@ class _LoginPageState extends BaseStatePage<LoginPage> {
     }, listener: (context, state) {
       if (state.isLogged) {
         Navigator.of(context).popAndPushNamed(homeRoute);
-      } else if (state.dataSend != null) {
-        showDialogConfirm(state);
       } else if (state.error.isNotEmpty) {
         showSnackBar(state.error);
+      }
+      else if (state.dataSend != null) {
+        showDialogConfirm(state);
       }
     });
 
