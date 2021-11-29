@@ -4,8 +4,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'data/repositories/auth/auth_repo.dart';
 import 'di/di.dart';
+import 'domain/repositories/auth/auth_repo.dart';
 import 'presentation/cubit/auth/auth_cubit.dart';
 import 'theme/theme.dart';
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [BlocProvider<AuthCubit>(create: (_) => AuthFirebasePhoneCubit(getIt<AuthPhoneRepo>()))],
+        providers: [BlocProvider<AuthCubit>(create: (_) => AuthFirebasePhoneCubit(getIt<AuthRepo>()))],
         child: MaterialApp(
           theme: theme,
           onGenerateRoute: AppRouter.generateRoute,
