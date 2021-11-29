@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:exam/data/datasource/work_exam/remote/remote.dart';
+import 'package:exam/data/model/exam/data_push_exam.dart';
 import 'package:exam/data/model/exam/push_exam.dart';
-import 'package:exam/domain/entities/entities.dart';
 class WorkExamFireRemote implements WorkExamRemote<PushExam, DataPushExam> {
   final FirebaseFirestore firestore;
   final collection = 'work_exam';

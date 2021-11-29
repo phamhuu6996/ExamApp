@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:exam/data/model/exam/data_exam.dart';
 import 'package:exam/data/model/exam/push_exam.dart';
 import 'package:exam/data/repositories/auth/auth_repo.dart';
-import 'package:exam/domain/entities/entities.dart';
 import 'package:exam/domain/repositories/exam/work_exam_repo.dart';
 import 'package:exam/presentation/cubit/work_exam/work_exam_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

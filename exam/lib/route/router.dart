@@ -1,8 +1,8 @@
+import 'package:exam/data/model/exam/data_exam.dart';
 import 'package:exam/data/repositories/exam/exam_fire_repo.dart';
 import 'package:exam/data/repositories/exam/work_exam_fire_repo.dart';
 import 'package:exam/data/repositories/profile/profile_repo.dart';
 import 'package:exam/di/di.dart';
-import 'package:exam/domain/entities/entities.dart';
 import 'package:exam/presentation/cubit/admin_exam/admin_exam.dart';
 import 'package:exam/presentation/cubit/home/home.dart';
 import 'package:exam/presentation/cubit/user_exam/user_exam.dart';

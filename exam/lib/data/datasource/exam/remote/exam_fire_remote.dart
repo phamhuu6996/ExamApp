@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:exam/app/const.dart';
+import 'package:exam/data/model/exam/data_exam.dart';
 import 'package:exam/data/model/exam/exam.dart';
-import 'package:exam/domain/entities/entities.dart';
 
 import 'exam_remote.dart';
 

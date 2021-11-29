@@ -1,6 +1,6 @@
 import 'dart:async';
+import 'package:exam/data/model/exam/data_exam.dart';
 import 'package:exam/data/model/exam/push_exam.dart';
-import 'package:exam/domain/entities/entities.dart';
 import 'package:exam/presentation/component/components.dart';
 import 'package:exam/presentation/cubit/work_exam/work_exam.dart';
 import 'package:exam/presentation/view/page/base_page.dart';
