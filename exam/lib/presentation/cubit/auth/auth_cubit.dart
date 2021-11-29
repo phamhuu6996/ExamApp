@@ -36,8 +36,9 @@ class AuthFirebasePhoneCubit extends AuthCubit {
   AuthFirebasePhoneCubit(AuthRepo authRepo) : super(authRepo);
 
   void sendCode(String phone) {
-    phone = convertPhone(phone.trim());
+    phone = phone.trim();
     if (validateMobile(phone)) {
+      phone = convertPhone(phone);
       emit(state.copyWith(isLoading: true));
       if(state.dataSend == null) {
         FirebaseAuth.instance.verifyPhoneNumber(

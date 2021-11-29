@@ -1,12 +1,6 @@
 bool validateMobile(String value) {
-  String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
-  RegExp regExp = RegExp(pattern);
-  if (value.isEmpty) {
-    return false;
-  } else if (!regExp.hasMatch(value)) {
-    return true;
-  }
-  return false;
+  final regExp = RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)');
+  return regExp.hasMatch(value);
 }
 
 String convertPhone(String phone) {
