@@ -17,16 +17,19 @@ class ProfileFireRemote implements ProfileRemote {
         );
   }
 
+  @override
   Future<void> add(DataProfile data) async {
     _initReference();
     await reference!.doc(data.key).set(data.profile);
   }
 
+  @override
   Future<void> delete(query) async {
     _initReference();
     await reference!.doc(query).delete();
   }
 
+  @override
   Future<DataProfile?> get(query) async {
     _initReference();
     DocumentSnapshot snapshot = await reference!.doc(query).get();
@@ -35,20 +38,9 @@ class ProfileFireRemote implements ProfileRemote {
     }
   }
 
+  @override
   Future<void> update(query, data) async {
     _initReference();
     await reference!.doc(query).update(data);
   }
-
-  // @override
-  // Future<Profile?> getProfile(ProfileParam data) async {
-  //   _initReference();
-  //   Profile? profiles = await _get(data.key);
-  //   if (profiles == null) {
-  //     await _add(data);
-  //   } else {
-  //     return profiles;
-  //   }
-  //   return _get(data.key);
-  // }
 }

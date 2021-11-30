@@ -33,8 +33,8 @@ class AppRouter {
             settings: settings);
       case resultExamRoute:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider<AdminExamCubit>(
-                create: (context) => AdminExamCubit(getIt<ExamRepo>()), child: const ResultExamPage()),
+            builder: (_) => BlocProvider<UserExamCubit>(
+                create: (context) => UserExamCubit(getIt<ExamRepo>()), child: const ResultExamPage()),
             settings: settings);
       case detailResultExamRoute:
         return MaterialPageRoute(

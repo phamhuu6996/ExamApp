@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:exam/app/static.dart';
 import 'package:exam/data/model/exam/data_exam.dart';
 import 'package:exam/data/model/exam/push_exam.dart';
 import 'package:exam/data/repositories/auth/auth_repo.dart';
@@ -17,7 +18,7 @@ class WorkExamCubit extends Cubit<WorkExamState> {
     for (var question in dataExam.exam.questions) {
       pushQuestions.add(PushQuestion(questionId: question.id, answerId: [], correctAnswerId: question.correctAnswerId));
     }
-    return PushExam(uid: user!.uid, examId: dataExam.id, questions: pushQuestions, userName: '');
+    return PushExam(uid: user!.uid, examId: dataExam.id, questions: pushQuestions, userName: profile?.name??'');
   }
 
   double score(PushExam pushExam) {

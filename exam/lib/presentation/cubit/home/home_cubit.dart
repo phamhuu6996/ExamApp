@@ -14,8 +14,9 @@ class HomeCubit extends Cubit<HomeState> {
       var profile = await profileRepo.getProfile(data);
       if (profile == null) {
         emit(state.copyWith(isCreateInfo: false));
-      } else
+      } else {
         emit(state.copyWith(profile: DataProfile(key: profile.key, profile: profile.profile)));
+      }
     } catch (e) {
       emit(state.copyWith(error: e.toString()));
     }

@@ -1,4 +1,5 @@
 import 'package:exam/app/const.dart';
+import 'package:exam/app/static.dart';
 import 'package:exam/data/model/profile/data_profile.dart';
 import 'package:exam/data/model/profile/profile.dart';
 import 'package:exam/data/repositories/auth/auth_repo.dart';
@@ -67,6 +68,7 @@ class _HomePageState extends BaseStatePage<HomePage> {
           ),
         );
       } else if (state.profile != null) {
+        profile = state.profile!.profile;
         return Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(10),
@@ -81,6 +83,7 @@ class _HomePageState extends BaseStatePage<HomePage> {
                         children: [
                           CRaiseButton(
                               text: "Publish exam!", function: () => Navigator.of(context).pushNamed(adminExamRoute)),
+                          const SizedBox(height: 30),
                           CRaiseButton(
                               text: "Exam result!", function: () => Navigator.of(context).pushNamed(resultExamRoute))
                         ],

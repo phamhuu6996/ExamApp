@@ -1,8 +1,7 @@
+import 'package:exam/app/static.dart';
 import 'package:exam/data/datasource/auth/remote/auth_remote.dart';
 import 'package:exam/domain/repositories/auth/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-User? user;
 
 class AuthPhoneRepo implements AuthRepo{
   final AuthRemote authRemote;

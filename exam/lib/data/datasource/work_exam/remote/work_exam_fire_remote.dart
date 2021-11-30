@@ -30,6 +30,7 @@ class WorkExamFireRemote implements WorkExamRemote<PushExam, DataPushExam> {
 
   @override
   Future<List<DataPushExam>> get(key, value) async {
+    _initReference();
     List<DataPushExam> dataPushExams = [];
     QuerySnapshot snapshot = await reference!.where(key, isEqualTo: value).get();
     for (var doc in snapshot.docs) {

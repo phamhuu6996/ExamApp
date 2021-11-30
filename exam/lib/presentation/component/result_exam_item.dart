@@ -1,5 +1,6 @@
 import 'package:exam/data/model/exam/push_exam.dart';
 import 'package:exam/theme/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ResultExamItem extends StatelessWidget {
@@ -13,19 +14,29 @@ class ResultExamItem extends StatelessWidget {
 
   Widget getContent() {
     return Container(
-        padding: const EdgeInsets.only(left: paddingLarge),
+        padding: const EdgeInsets.symmetric(horizontal: paddingLarge),
         alignment: Alignment.centerLeft,
         child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(exam.userName, style: titleStyle.copyWith(color: Colors.white)),
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Tổng số câu: ${exam.questions.length}', style: contentStyle.copyWith(color: Colors.white)),
-                  Text('Số điểm: ${exam.score}', style: contentStyle.copyWith(color: Colors.white)),
+                  Text('User name: ' + exam.userName, style: titleStyle.copyWith(color: Colors.white)),
+                  Text('Correct : ${(exam.questions.length / 100 * exam.score).toStringAsFixed(0)}',
+                      style: contentStyle.copyWith(color: Colors.white)),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Score: ${exam.score}', style: contentStyle.copyWith(color: Colors.white)),
+                  Text('Count: ${exam.questions.length}', style: contentStyle.copyWith(color: Colors.white))
                 ],
               )
-            ]
-        ));
+            ]));
   }
 
   @override
