@@ -39,8 +39,8 @@ class AuthFirebasePhoneCubit extends AuthCubit {
     phone = phone.trim();
     if (validateMobile(phone)) {
       phone = convertPhone(phone);
-      emit(state.copyWith(isLoading: true));
       if(state.dataSend == null || state.dataSend!.phone != phone) {
+        emit(state.resetCodeSent(isLoading: true));
         FirebaseAuth.instance.verifyPhoneNumber(
           phoneNumber: phone,
           timeout: Duration(seconds: timeOut),
@@ -54,8 +54,6 @@ class AuthFirebasePhoneCubit extends AuthCubit {
           codeAutoRetrievalTimeout: (verificationId) {
             emit(state.resetCodeSent());
           });
-      }else {
-        emit(state.copyWith(isLoading: false));
       }
     } else {
       emit(state.copyWith(error: 'It do not phone number.'));
