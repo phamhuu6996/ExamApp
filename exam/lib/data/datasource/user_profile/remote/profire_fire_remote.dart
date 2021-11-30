@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:exam/data/datasource/user_profile/remote/remote.dart';
+import 'package:exam/data/model/profile/data_profile.dart';
 import 'package:exam/data/model/profile/profile.dart';
-import 'package:exam/domain/param/param.dart';
 
-class ProfileFireRemote implements ProfileRemote<ProfileParam, Profile> {
+class ProfileFireRemote implements ProfileRemote {
   final FirebaseFirestore firestore;
   final collection = 'profile';
   CollectionReference? reference;
@@ -17,34 +17,38 @@ class ProfileFireRemote implements ProfileRemote<ProfileParam, Profile> {
         );
   }
 
-  Future<void> _add(ProfileParam data) async {
-    await reference!.doc(data.key).set(data.value);
+  Future<void> add(DataProfile data) async {
+    _initReference();
+    await reference!.doc(data.key).set(data.profile);
   }
 
-  Future<void> _delete(query) async {
+  Future<void> delete(query) async {
+    _initReference();
     await reference!.doc(query).delete();
   }
 
-  Future<Profile?> _get(query) async {
+  Future<DataProfile?> get(query) async {
+    _initReference();
     DocumentSnapshot snapshot = await reference!.doc(query).get();
     if (snapshot.exists) {
-      return (snapshot.data()!) as Profile;
+      return DataProfile(key: snapshot.id, profile: (snapshot.data()!) as Profile);
     }
   }
 
-  Future<void> _update(query, data) async {
+  Future<void> update(query, data) async {
+    _initReference();
     await reference!.doc(query).update(data);
   }
 
-  @override
-  Future<Profile?> getProfile(ProfileParam data) async {
-    _initReference();
-    Profile? profiles = await _get(data.key);
-    if (profiles == null) {
-      await _add(data);
-    } else {
-      return profiles;
-    }
-    return _get(data.key);
-  }
+  // @override
+  // Future<Profile?> getProfile(ProfileParam data) async {
+  //   _initReference();
+  //   Profile? profiles = await _get(data.key);
+  //   if (profiles == null) {
+  //     await _add(data);
+  //   } else {
+  //     return profiles;
+  //   }
+  //   return _get(data.key);
+  // }
 }

@@ -1,7 +1,7 @@
 import 'package:exam/app/const.dart';
+import 'package:exam/data/model/profile/data_profile.dart';
 import 'package:exam/data/model/profile/profile.dart';
 import 'package:exam/data/repositories/auth/auth_repo.dart';
-import 'package:exam/domain/param/param.dart';
 import 'package:exam/presentation/component/components.dart';
 import 'package:exam/presentation/component/logout.dart';
 import 'package:exam/presentation/cubit/home/home.dart';
@@ -23,6 +23,7 @@ class HomePage extends BasePage {
 
 class _HomePageState extends BaseStatePage<HomePage> {
   late HomeCubit homeCubit;
+  final TextEditingController nameController = TextEditingController();
 
   @override
   void initState() {
@@ -30,7 +31,7 @@ class _HomePageState extends BaseStatePage<HomePage> {
     homeCubit = BlocProvider.of<HomeCubit>(context);
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       if (user != null) {
-        homeCubit.getProfile(ProfileParam(key: user!.uid, value: const Profile(role: 'user', name: 'user')));
+        homeCubit.getProfile(user!.uid);
       }
     });
   }
@@ -48,6 +49,21 @@ class _HomePageState extends BaseStatePage<HomePage> {
     body = BlocConsumer<HomeCubit, HomeState>(builder: (context, state) {
       if (state.isLoading) {
         return const Center(child: CircularProgressIndicator());
+      } else if (!state.isCreateInfo) {
+        return Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            children: [
+              Text("Please input name!", style: contentStyle.copyWith(color: Colors.white)),
+              CTextFieldLine(controller: nameController),
+              CRaiseButton(
+                  text: "Commit",
+                  function: () => homeCubit.addProfile(
+                      DataProfile(key: user!.uid, profile: Profile(role: 'user', name: nameController.text))))
+            ],
+          ),
+        );
       } else if (state.profile != null) {
         return Container(
             alignment: Alignment.center,
