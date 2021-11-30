@@ -54,9 +54,11 @@ class _HomePageState extends BaseStatePage<HomePage> {
           alignment: Alignment.center,
           padding: const EdgeInsets.all(10),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Please input name!", style: contentStyle.copyWith(color: Colors.white)),
               CTextFieldLine(controller: nameController),
+              const SizedBox(height: 30),
               CRaiseButton(
                   text: "Commit",
                   function: () => homeCubit.addProfile(
