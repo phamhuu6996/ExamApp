@@ -6,5 +6,5 @@ abstract class WorkExamRemote<P,R> extends BaseRemote{
 
   Future<void> delete(var query);
 
-  Future<List<R>> get(var query);
+  Future<List<R>> get(key, value);
 }

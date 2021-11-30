@@ -8,3 +8,4 @@ export 'control_btn.dart';
 export 'exam_item.dart';
 export 'flat_button.dart';
 export 'question_item.dart';
+export 'result_exam_item.dart';

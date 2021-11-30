@@ -8,8 +8,8 @@ class WorkExamFireRepo implements WorkExamRepo{
   WorkExamFireRepo(this.examRemote);
 
   @override
-  Future getWorkExams(data) {
-    return examRemote.get(data);
+  Future getWorkExams(key, value) {
+    return examRemote.get(key, value);
   }
 
   @override

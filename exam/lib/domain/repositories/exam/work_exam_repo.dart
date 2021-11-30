@@ -1,4 +1,4 @@
 abstract class WorkExamRepo{
-  Future getWorkExams(var data);
+  Future getWorkExams(var key, var value);
   Future pushWorkExam(var data);
 }

@@ -35,11 +35,13 @@ class Questions {
   });
   late final String id;
   late final String question;
+  late final List<String> correctAnswerId;
   late final List<Answers> answers;
 
   Questions.fromJson(Map<String, dynamic> json){
     id = json['id'];
     question = json['question'];
+    correctAnswerId = List.from(json['correct_answer_id']);
     answers = List.from(json['answers']).map((e)=>Answers.fromJson(e)).toList();
   }
 
@@ -47,6 +49,7 @@ class Questions {
     final _data = <String, dynamic>{};
     _data['id'] = id;
     _data['question'] = question;
+    _data['correct_answer_id'] = correctAnswerId;
     _data['answers'] = answers.map((e)=>e.toJson()).toList();
     return _data;
   }

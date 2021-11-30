@@ -56,11 +56,21 @@ class _HomePageState extends BaseStatePage<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('You are a ' + state.profile!.profile.name, style: titleStyle.copyWith(color: Colors.white)),
+                Text('Your role are ' + state.profile!.profile.role, style: titleStyle.copyWith(color: Colors.white)),
                 const SizedBox(height: 50),
-                CRaiseButton(
-                    text: "Start now!",
-                    function: () => Navigator.of(context)
-                        .pushNamed(state.profile!.profile.role == adminRole ? adminExamRoute : userExamRoute))
+                state.profile!.profile.role == adminRole
+                    ? Column(
+                        children: [
+                          CRaiseButton(
+                              text: "Publish exam!", function: () => Navigator.of(context).pushNamed(adminExamRoute)),
+                          CRaiseButton(
+                              text: "Exam result!", function: () => Navigator.of(context).pushNamed(resultExamRoute))
+                        ],
+                      )
+                    : CRaiseButton(
+                        text: "Start now!",
+                        function: () => Navigator.of(context)
+                            .pushNamed(state.profile!.profile.role == adminRole ? adminExamRoute : userExamRoute))
               ],
             ));
       } else {

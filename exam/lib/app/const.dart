@@ -9,6 +9,9 @@ Map<String, dynamic> examExample = {
     {
       "id": '1',
       "question": "Question 1",
+      "correct_answer_id": [
+        "A"
+      ],
       "answers": [
         {
           "id": "A",
@@ -34,6 +37,9 @@ Map<String, dynamic> examExample = {
     {
       "id": '2',
       "question": "Question 2",
+      "correct_answer_id": [
+        "B"
+      ],
       "answers": [
         {"id": "A", "value": "Trên thị trường, có 65/100 đồng tiền giảm giá so với 24 giờ trước."},
         {"id": "B", "value": "Trong đó, mức giảm mạnh nhất thị trường 9,95% thuộc về The Sandbox."},
@@ -52,6 +58,9 @@ Map<String, dynamic> examExample = {
     {
       "id": '3',
       "question": "Question 3",
+      "correct_answer_id": [
+        "B"
+      ],
       "answers": [
         {
           "id": "A",
@@ -77,6 +86,9 @@ Map<String, dynamic> examExample = {
     {
       "id": '4',
       "question": "Question 4",
+      "correct_answer_id": [
+        "A"
+      ],
       "answers": [
         {"id": "A", "value": "Trên thị trường, có 65/100 đồng tiền giảm giá so với 24 giờ trước."},
         {"id": "B", "value": "Trong đó, mức giảm mạnh nhất thị trường 9,95% thuộc về The Sandbox."},
@@ -95,6 +107,9 @@ Map<String, dynamic> examExample = {
     {
       "id": '5',
       "question": "Question 5",
+      "correct_answer_id": [
+        "C"
+      ],
       "answers": [
         {
           "id": "A",
