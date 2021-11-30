@@ -98,7 +98,7 @@ class _WorkExamPageState extends BaseStatePage<WorkExamPage> {
                                       duration: const Duration(milliseconds: 200), curve: Curves.ease),
                                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                                     const Icon(Icons.arrow_back_outlined, color: Colors.black),
-                                    Text('Previous', style: titleStyle)
+                                    Text('Previous', style: titleStyle.copyWith(color: Colors.black))
                                   ]));
                             } else {
                               return Container();
@@ -115,7 +115,7 @@ class _WorkExamPageState extends BaseStatePage<WorkExamPage> {
                             }
                           },
                           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                            Text('Next', style: titleStyle),
+                            Text('Next', style: titleStyle.copyWith(color: Colors.black)),
                             const Icon(Icons.arrow_forward_outlined, color: Colors.black)
                           ])))
                 ],
@@ -133,5 +133,11 @@ class _WorkExamPageState extends BaseStatePage<WorkExamPage> {
       }
     });
     return super.build(context);
+  }
+
+  @override
+  void dispose() {
+    streamTab.close();
+    super.dispose();
   }
 }

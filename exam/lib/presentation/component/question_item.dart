@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:exam/data/model/exam/exam.dart';
 import 'package:exam/data/model/exam/push_exam.dart';
 import 'package:exam/presentation/component/components.dart';
+import 'package:exam/theme/style.dart';
 import 'package:flutter/material.dart';
 
 class QuestionItem extends StatefulWidget {
@@ -38,7 +39,8 @@ class _QuestionItemState extends State<QuestionItem> {
   Widget build(BuildContext context) {
    return Column(
       children: [
-        Center(child: Text(widget.questions.question)),
+        Center(child: Text(widget.questions.question, style: titleStyle.copyWith(color: Colors.white))),
+        SizedBox(height: 30),
         Expanded(child: ListView.builder(
             itemCount: widget.questions.answers.length,
             itemBuilder: (context,index){

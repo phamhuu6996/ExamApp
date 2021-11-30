@@ -28,9 +28,10 @@ class AuthState extends Equatable {
 class DataSend extends Equatable {
   final String id;
   final int timeOut;
+  final String phone;
 
-  const DataSend(this.id, this.timeOut);
+  const DataSend(this.id, this.timeOut, this.phone);
 
   @override
-  List<Object?> get props => [id, timeOut];
+  List<Object?> get props => [id, timeOut, phone];
 }
