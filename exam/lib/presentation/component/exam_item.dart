@@ -18,7 +18,14 @@ class ExamItem extends StatelessWidget {
     return Container(
         padding: const EdgeInsets.only(left: paddingLarge),
         alignment: Alignment.centerLeft,
-        child: Text(exam.title, style: titleStyle.copyWith(color: Colors.white)));
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(exam.title, style: titleStyle.copyWith(color: Colors.white)),
+            Text(exam.content, style: contentStyle.copyWith(color: Colors.white))
+          ],
+        ));
   }
 
   @override

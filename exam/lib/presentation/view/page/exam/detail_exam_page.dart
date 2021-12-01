@@ -128,7 +128,7 @@ class _DetailExamPageState extends BaseStatePage<DetailExamPage> {
       if (state.error.isNotEmpty) {
         showSnackBar(state.error);
       } else if(state.isPublish) {
-        showSnackBar('Push exam success');
+        showSnackBar('Your score are: ${pushExam.score}');
         Navigator.of(context).pop();
       }
     });
