@@ -23,7 +23,7 @@ class ResultExamItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('User name: ' + exam.userName, style: titleStyle.copyWith(color: Colors.white)),
+                  Text('Name: ' + exam.userName, style: titleStyle.copyWith(color: Colors.white)),
                   Text('Correct : ${(exam.questions.length / 100 * exam.score).toStringAsFixed(0)}',
                       style: contentStyle.copyWith(color: Colors.white)),
                 ],
