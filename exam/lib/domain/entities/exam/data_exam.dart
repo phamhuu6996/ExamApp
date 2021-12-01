@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:exam/data/model/exam/exam.dart';
+import 'package:exam/domain/entities/exam/exam.dart';
 
 class DataExam extends Equatable {
   final String id;

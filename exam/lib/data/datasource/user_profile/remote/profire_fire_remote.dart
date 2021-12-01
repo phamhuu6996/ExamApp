@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:exam/data/datasource/user_profile/remote/remote.dart';
-import 'package:exam/data/model/profile/data_profile.dart';
-import 'package:exam/data/model/profile/profile.dart';
+import 'package:exam/data/model/profile/profile_model.dart';
+import 'package:exam/domain/entities/profile/data_profile.dart';
 
 class ProfileFireRemote implements ProfileRemote {
   final FirebaseFirestore firestore;
@@ -11,8 +11,8 @@ class ProfileFireRemote implements ProfileRemote {
   ProfileFireRemote(this.firestore);
 
   void _initReference() {
-    reference ??= firestore.collection(collection).withConverter<Profile>(
-          fromFirestore: (snapshot, _) => Profile.fromJson(snapshot.data()!),
+    reference ??= firestore.collection(collection).withConverter<ProfileModel>(
+          fromFirestore: (snapshot, _) => ProfileModel.fromJson(snapshot.data()!),
           toFirestore: (profile, _) => profile.toJson(),
         );
   }
@@ -34,7 +34,7 @@ class ProfileFireRemote implements ProfileRemote {
     _initReference();
     DocumentSnapshot snapshot = await reference!.doc(query).get();
     if (snapshot.exists) {
-      return DataProfile(key: snapshot.id, profile: (snapshot.data()!) as Profile);
+      return DataProfile(key: snapshot.id, profile: (snapshot.data()!) as ProfileModel);
     }
   }
 

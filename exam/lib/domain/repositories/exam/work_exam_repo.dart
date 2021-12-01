@@ -1,4 +1,6 @@
+import 'package:exam/domain/entities/exam/data_detail_exam.dart';
+
 abstract class WorkExamRepo{
-  Future getWorkExams(var key, var value);
-  Future pushWorkExam(var data);
+  Future<List<DataDetailExam>> getWorkExams(var key, var value);
+  Future<String> pushWorkExam(var data);
 }

@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'remote.dart';
 
-class AuthPhoneRemote implements AuthRemote<AuthPhoneParam, User> {
+class AuthPhoneRemote implements AuthRemote {
   final FirebaseAuth firebaseAuth;
 
   AuthPhoneRemote(this.firebaseAuth);

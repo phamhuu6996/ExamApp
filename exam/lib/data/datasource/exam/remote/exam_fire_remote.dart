@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:exam/app/const.dart';
-import 'package:exam/data/model/exam/data_exam.dart';
-import 'package:exam/data/model/exam/exam.dart';
+import 'package:exam/data/model/exam/exam_model.dart';
+import 'package:exam/domain/entities/exam/data_exam.dart';
 
 import 'exam_remote.dart';
 
-class ExamFireRemote implements ExamRemote<Exam, DataExam> {
+class ExamFireRemote implements ExamRemote {
   final FirebaseFirestore firestore;
   final collection = 'exam';
   CollectionReference? reference;
@@ -15,14 +15,14 @@ class ExamFireRemote implements ExamRemote<Exam, DataExam> {
   ExamFireRemote(this.firestore);
 
   void _initReference() {
-    reference ??= firestore.collection(collection).withConverter<Exam>(
-          fromFirestore: (snapshot, _) => Exam.fromJson(snapshot.data()!),
+    reference ??= firestore.collection(collection).withConverter<ExamModel>(
+          fromFirestore: (snapshot, _) => ExamModel.fromJson(snapshot.data()!),
           toFirestore: (exam, _) => exam.toJson(),
         );
   }
 
   @override
-  Future<bool> add(Exam data) async {
+  Future<bool> add(ExamModel data) async {
     _initReference();
     await reference!.add(data);
     return true;
@@ -39,7 +39,7 @@ class ExamFireRemote implements ExamRemote<Exam, DataExam> {
   Future<Stream<List<DataExam>>> get(query) async {
     _initReference();
     return reference!.snapshots().transform<List<DataExam>>(
-        StreamTransformer<QuerySnapshot<Exam>, List<DataExam>>.fromHandlers(handleData: (event, sink) {
+        StreamTransformer<QuerySnapshot<ExamModel>, List<DataExam>>.fromHandlers(handleData: (event, sink) {
       List<DataExam> dataExams = event.docs
           .where((element) => element.data().pushed != (query == adminRole))
           .toList()

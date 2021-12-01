@@ -1,5 +1,5 @@
-import 'package:exam/data/model/exam/data_exam.dart';
 import 'package:exam/di/di.dart';
+import 'package:exam/domain/entities/exam/data_exam.dart';
 import 'package:exam/domain/repositories/repositories.dart';
 import 'package:exam/presentation/cubit/detail_exam/detail_exam.dart';
 import 'package:exam/presentation/cubit/exam/exam.dart';

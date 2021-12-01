@@ -1,7 +1,7 @@
-import 'package:exam/data/model/profile/data_profile.dart';
+import 'package:exam/domain/entities/profile/data_profile.dart';
 
-abstract class ProfileRepo{
- Future<DataProfile?> getProfile(String data);
+abstract class ProfileRepo {
+  Future<DataProfile?> getProfile(String data);
 
- Future<DataProfile?> addProfile(DataProfile data);
+  Future<DataProfile?> addProfile(DataProfile data);
 }

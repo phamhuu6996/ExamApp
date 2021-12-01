@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:exam/data/model/exam/data_exam.dart';
-import 'package:exam/data/model/exam/push_exam.dart';
+import 'package:exam/domain/entities/exam/data_exam.dart';
+import 'package:exam/domain/entities/exam/detail_exam.dart';
 import 'package:exam/presentation/component/components.dart';
 import 'package:exam/presentation/cubit/detail_exam/detail_exam.dart';
 import 'package:exam/presentation/view/page/base_page.dart';
@@ -26,7 +26,7 @@ class _DetailExamPageState extends BaseStatePage<DetailExamPage> {
   List<Widget> childrenTab = [];
   List<Widget> children = [];
   int index = 0;
-  late PushExam pushExam;
+  late DetailExam pushExam;
 
   @override
   void initState() {
@@ -54,7 +54,7 @@ class _DetailExamPageState extends BaseStatePage<DetailExamPage> {
               color: i == index ? Colors.white : Colors.grey);
         },
       )));
-      children.add(QuestionItem(questions: widget.dataExam.exam.questions[i], pushQuestion: pushExam.questions[i]));
+      children.add(QuestionItem(questions: widget.dataExam.exam.questions[i], detailQuestion: pushExam.questions[i]));
     }
   }
 

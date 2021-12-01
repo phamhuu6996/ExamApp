@@ -1,4 +1,4 @@
-import 'package:exam/data/model/profile/data_profile.dart';
+import 'package:exam/domain/entities/profile/data_profile.dart';
 import 'package:exam/domain/repositories/profile/profile_repo.dart';
 import 'package:exam/presentation/cubit/home/home_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

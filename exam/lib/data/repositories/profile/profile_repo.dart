@@ -1,11 +1,11 @@
 import 'package:exam/data/datasource/user_profile/remote/remote.dart';
-import 'package:exam/data/model/profile/data_profile.dart';
+import 'package:exam/domain/entities/profile/data_profile.dart';
 import 'package:exam/domain/repositories/repositories.dart';
 
-class ProfileFireRepo implements ProfileRepo {
+class ProfileRepoImpl implements ProfileRepo {
   final ProfileRemote profileRemote;
 
-  ProfileFireRepo(this.profileRemote);
+  ProfileRepoImpl(this.profileRemote);
 
   @override
   Future<DataProfile?> getProfile(String data) {

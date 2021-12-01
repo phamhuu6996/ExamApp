@@ -1,15 +1,14 @@
 import 'dart:async';
-
-import 'package:exam/data/model/exam/exam.dart';
-import 'package:exam/data/model/exam/push_exam.dart';
+import 'package:exam/domain/entities/exam/detail_exam.dart';
+import 'package:exam/domain/entities/exam/exam.dart';
 import 'package:exam/presentation/component/components.dart';
 import 'package:exam/theme/style.dart';
 import 'package:flutter/material.dart';
 
 class QuestionItem extends StatefulWidget {
   final Questions questions;
-  final PushQuestion pushQuestion;
-  const QuestionItem({Key? key, required this.questions, required this.pushQuestion}) : super(key: key);
+  final DetailQuestion detailQuestion;
+  const QuestionItem({Key? key, required this.questions, required this.detailQuestion}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -22,15 +21,15 @@ class _QuestionItemState extends State<QuestionItem> {
 
   void select(String id){
     controller.sink.add(id);
-    widget.pushQuestion.answerId = [id];
+    widget.detailQuestion.answerId = [id];
   }
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      if(widget.pushQuestion.answerId.isNotEmpty) {
-        controller.sink.add(widget.pushQuestion.answerId[0]);
+      if(widget.detailQuestion.answerId.isNotEmpty) {
+        controller.sink.add(widget.detailQuestion.answerId[0]);
       }
     });
   }

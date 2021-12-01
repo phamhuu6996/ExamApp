@@ -1,5 +1,5 @@
 import 'package:exam/core/remote/base_remote.dart';
-import 'package:exam/data/model/profile/data_profile.dart';
+import 'package:exam/domain/entities/profile/data_profile.dart';
 
 abstract class ProfileRemote extends BaseRemote {
   Future<void> add(DataProfile data);

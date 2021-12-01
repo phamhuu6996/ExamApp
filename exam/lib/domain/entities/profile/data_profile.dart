@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:exam/data/model/profile/profile.dart';
+import 'package:exam/domain/entities/profile/profile.dart';
 
 class DataProfile extends Equatable {
   final String key;

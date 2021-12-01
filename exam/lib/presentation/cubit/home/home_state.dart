@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:exam/data/model/profile/data_profile.dart';
+import 'package:exam/domain/entities/profile/data_profile.dart';
 
 class HomeState extends Equatable {
   final bool isLoading;

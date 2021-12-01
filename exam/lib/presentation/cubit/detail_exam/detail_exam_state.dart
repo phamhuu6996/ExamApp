@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:exam/data/model/exam/data_exam.dart';
+import 'package:exam/domain/entities/exam/data_exam.dart';
 
 class DetailExamState extends Equatable {
   final bool isLoading;

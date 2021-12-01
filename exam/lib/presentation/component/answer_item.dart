@@ -1,4 +1,4 @@
-import 'package:exam/data/model/exam/exam.dart';
+import 'package:exam/domain/entities/exam/exam.dart';
 import 'package:exam/theme/dimens.dart';
 import 'package:exam/theme/style.dart';
 import 'package:flutter/cupertino.dart';

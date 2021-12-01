@@ -1,4 +1,4 @@
-import 'package:exam/data/model/exam/data_exam.dart';
+import 'package:exam/domain/entities/exam/data_exam.dart';
 import 'package:exam/presentation/component/components.dart';
 import 'package:exam/presentation/cubit/result_exam/result_exam.dart';
 import 'package:exam/presentation/view/page/base_page.dart';

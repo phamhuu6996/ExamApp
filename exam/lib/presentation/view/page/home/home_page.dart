@@ -1,8 +1,7 @@
 import 'package:exam/app/const.dart';
 import 'package:exam/app/static.dart';
-import 'package:exam/data/model/profile/data_profile.dart';
-import 'package:exam/data/model/profile/profile.dart';
-import 'package:exam/data/repositories/auth/auth_repo.dart';
+import 'package:exam/domain/entities/profile/data_profile.dart';
+import 'package:exam/domain/entities/profile/profile.dart';
 import 'package:exam/presentation/component/components.dart';
 import 'package:exam/presentation/component/logout.dart';
 import 'package:exam/presentation/cubit/home/home.dart';

@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:exam/app/static.dart';
-import 'package:exam/data/model/exam/data_exam.dart';
-import 'package:exam/data/model/exam/push_exam.dart';
+import 'package:exam/domain/entities/exam/data_exam.dart';
+import 'package:exam/domain/entities/exam/detail_exam.dart';
 import 'package:exam/domain/repositories/exam/work_exam_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,15 +13,15 @@ class DetailExamCubit extends Cubit<DetailExamState> {
 
   DetailExamCubit(this.workExamRepo) : super(const DetailExamState());
 
-  PushExam initPushExam(DataExam dataExam) {
-    List<PushQuestion> pushQuestions = [];
+  DetailExam initPushExam(DataExam dataExam) {
+    List<DetailQuestion> pushQuestions = [];
     for (var question in dataExam.exam.questions) {
-      pushQuestions.add(PushQuestion(questionId: question.id, answerId: [], correctAnswerId: question.correctAnswerId));
+      pushQuestions.add(DetailQuestion(questionId: question.id, answerId: [], correctAnswerId: question.correctAnswerId));
     }
-    return PushExam(uid: user!.uid, examId: dataExam.id, questions: pushQuestions, userName: profile?.name??'');
+    return DetailExam(uid: user!.uid, examId: dataExam.id, questions: pushQuestions, userName: profile?.name??'');
   }
 
-  double score(PushExam pushExam) {
+  double score(DetailExam pushExam) {
     int correctCount = pushExam.questions.length;
     for (var question in pushExam.questions) {
       for (var answerId in question.correctAnswerId) {
@@ -37,7 +37,7 @@ class DetailExamCubit extends Cubit<DetailExamState> {
       return 0;
   }
 
-  Future<void> push(PushExam data) async {
+  Future<void> push(DetailExam data) async {
     if (!state.isLoading) {
       try {
         emit(state.copyWith(isLoading: true));

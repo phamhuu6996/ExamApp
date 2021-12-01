@@ -1,10 +1,10 @@
-import 'package:exam/data/model/exam/push_exam.dart';
+import 'package:exam/domain/entities/exam/detail_exam.dart';
 import 'package:exam/theme/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ResultExamItem extends StatelessWidget {
-  final PushExam exam;
+  final DetailExam exam;
 
   const ResultExamItem({Key? key, required this.exam}) : super(key: key);
 

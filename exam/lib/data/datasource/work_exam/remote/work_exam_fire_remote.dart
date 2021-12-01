@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:exam/data/datasource/work_exam/remote/remote.dart';
-import 'package:exam/data/model/exam/data_push_exam.dart';
-import 'package:exam/data/model/exam/push_exam.dart';
-class WorkExamFireRemote implements WorkExamRemote<PushExam, DataPushExam> {
+import 'package:exam/data/model/exam/detail_exam_model.dart';
+import 'package:exam/domain/entities/exam/data_detail_exam.dart';
+class WorkExamFireRemote implements WorkExamRemote {
   final FirebaseFirestore firestore;
   final collection = 'work_exam';
   CollectionReference? reference;
@@ -10,14 +10,14 @@ class WorkExamFireRemote implements WorkExamRemote<PushExam, DataPushExam> {
   WorkExamFireRemote(this.firestore);
 
   void _initReference() {
-    reference ??= firestore.collection(collection).withConverter<PushExam>(
-          fromFirestore: (snapshot, _) => PushExam.fromJson(snapshot.data()!),
+    reference ??= firestore.collection(collection).withConverter<DetailExamModel>(
+          fromFirestore: (snapshot, _) => DetailExamModel.fromJson(snapshot.data()!),
           toFirestore: (exam, _) => exam.toJson(),
         );
   }
 
   @override
-  Future<String> add(PushExam data) async {
+  Future<String> add(DetailExamModel data) async {
     _initReference();
     return (await reference!.add(data)).id;
   }
@@ -29,14 +29,14 @@ class WorkExamFireRemote implements WorkExamRemote<PushExam, DataPushExam> {
   }
 
   @override
-  Future<List<DataPushExam>> get(key, value) async {
+  Future<List<DataDetailExam>> get(key, value) async {
     _initReference();
-    List<DataPushExam> dataPushExams = [];
+    List<DataDetailExam> dataPushExams = [];
     QuerySnapshot snapshot = await reference!.where(key, isEqualTo: value).get();
     for (var doc in snapshot.docs) {
       var data = doc.data();
-      if (data is PushExam) {
-        dataPushExams.add(DataPushExam(id: doc.id, pushExam: data));
+      if (data is DetailExamModel) {
+        dataPushExams.add(DataDetailExam(id: doc.id, pushExam: data));
       }
     }
     return dataPushExams;
