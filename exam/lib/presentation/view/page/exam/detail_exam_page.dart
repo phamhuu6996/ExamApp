@@ -2,25 +2,25 @@ import 'dart:async';
 import 'package:exam/data/model/exam/data_exam.dart';
 import 'package:exam/data/model/exam/push_exam.dart';
 import 'package:exam/presentation/component/components.dart';
-import 'package:exam/presentation/cubit/work_exam/work_exam.dart';
+import 'package:exam/presentation/cubit/detail_exam/detail_exam.dart';
 import 'package:exam/presentation/view/page/base_page.dart';
 import 'package:exam/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class WorkExamPage extends BasePage {
+class DetailExamPage extends BasePage {
   final DataExam dataExam;
 
-  const WorkExamPage({Key? key, required this.dataExam}) : super(key: key, title: 'Exam');
+  const DetailExamPage({Key? key, required this.dataExam}) : super(key: key, title: 'Exam');
 
   @override
   State<StatefulWidget> createState() {
-    return _WorkExamPageState();
+    return _DetailExamPageState();
   }
 }
 
-class _WorkExamPageState extends BaseStatePage<WorkExamPage> {
-  late WorkExamCubit workExamCubit;
+class _DetailExamPageState extends BaseStatePage<DetailExamPage> {
+  late DetailExamCubit detailExamCubit;
   final StreamController streamTab = StreamController.broadcast();
   final PageController pageController = PageController();
   List<Widget> childrenTab = [];
@@ -31,8 +31,8 @@ class _WorkExamPageState extends BaseStatePage<WorkExamPage> {
   @override
   void initState() {
     super.initState();
-    workExamCubit = BlocProvider.of<WorkExamCubit>(context);
-    pushExam = workExamCubit.initPushExam(widget.dataExam);
+    detailExamCubit = BlocProvider.of<DetailExamCubit>(context);
+    pushExam = detailExamCubit.initPushExam(widget.dataExam);
   }
 
   void onPageChange(int index) {
@@ -61,7 +61,7 @@ class _WorkExamPageState extends BaseStatePage<WorkExamPage> {
   @override
   Widget build(BuildContext context) {
     setChildren();
-    body = BlocConsumer<WorkExamCubit, WorkExamState>(builder: (context, state) {
+    body = BlocConsumer<DetailExamCubit, DetailExamState>(builder: (context, state) {
       if (state.isLoading) {
         return const Center(child: CircularProgressIndicator());
       } else {
@@ -111,7 +111,7 @@ class _WorkExamPageState extends BaseStatePage<WorkExamPage> {
                             if (index < children.length - 1) {
                               pageController.nextPage(duration: const Duration(milliseconds: 200), curve: Curves.ease);
                             } else {
-                              workExamCubit.push(pushExam);
+                              detailExamCubit.push(pushExam);
                             }
                           },
                           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [

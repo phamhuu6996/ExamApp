@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:exam/data/model/exam/data_exam.dart';
 
-class AdminExamState extends Equatable {
+class DetailExamState extends Equatable {
   final bool isLoading;
-  final List<DataExam> dataExam;
+  final DataExam? dataExam;
   final String error;
   final bool isPublish;
 
-  const AdminExamState(
-      {this.isLoading = false, this.dataExam = const <DataExam>[], this.error = '', this.isPublish = false});
+  const DetailExamState(
+      {this.isLoading = false, this.dataExam, this.error = '', this.isPublish = false});
 
-  AdminExamState copyWith({isLoading, dataExam, error, isPublish}) {
-    return AdminExamState(
+  DetailExamState copyWith({isLoading, dataExam, error, isPublish}) {
+    return DetailExamState(
         isLoading: isLoading ?? false,
         dataExam: dataExam ?? this.dataExam,
         error: error ?? '',

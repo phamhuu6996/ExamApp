@@ -1,14 +1,14 @@
-import 'package:exam/app/const.dart';
+import 'package:exam/data/model/exam/data_exam.dart';
 import 'package:exam/presentation/component/components.dart';
-import 'package:exam/presentation/cubit/user_exam/user_exam.dart';
+import 'package:exam/presentation/cubit/result_exam/result_exam.dart';
 import 'package:exam/presentation/view/page/base_page.dart';
-import 'package:exam/route/route_name.dart';
 import 'package:exam/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ResultExamPage extends BasePage {
-  const ResultExamPage({Key? key}) : super(key: key, title: 'Exam');
+  final DataExam exam;
+  const ResultExamPage({Key? key, required this.exam}) : super(key: key, title: 'Exam');
 
   @override
   State<StatefulWidget> createState() {
@@ -17,37 +17,41 @@ class ResultExamPage extends BasePage {
 }
 
 class _ResultExamPageState extends BaseStatePage<ResultExamPage> {
-  late UserExamCubit userExamCubit;
+  late ResultExamCubit resultExamCubit;
 
   void getExam() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      userExamCubit.getExam(userRole);
+      resultExamCubit.getExams('exam_id', widget.exam.id);
     });
   }
 
   @override
   void initState() {
     super.initState();
-    userExamCubit = BlocProvider.of<UserExamCubit>(context);
+    resultExamCubit = BlocProvider.of<ResultExamCubit>(context);
     getExam();
   }
 
   @override
   Widget build(BuildContext context) {
-    body = BlocConsumer<UserExamCubit, UserExamState>(builder: (context, state) {
+    body = BlocConsumer<ResultExamCubit, ResultExamState>(builder: (context, state) {
       if (state.isLoading) {
         return const Center(child: CircularProgressIndicator());
       }
       if (state.dataExam.isNotEmpty) {
-        return Container(
-            padding: const EdgeInsets.symmetric(horizontal: paddingLarge, vertical: paddingLarge*2),
-            child: ListView.builder(
-                itemCount: state.dataExam.length,
-                itemBuilder: (context, index) {
-                  return UserExamItem(exam: state.dataExam[index].exam, itemClick: (){
-                    Navigator.of(context).pushNamed(detailResultExamRoute, arguments: state.dataExam[index]);
-                  });
-                }));
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text('Exam name: ' + widget.exam.exam.title, style: titleStyle.copyWith(color: Colors.white)),
+            Expanded(child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: paddingLarge, vertical: paddingLarge*2),
+                child: ListView.builder(
+                    itemCount: state.dataExam.length,
+                    itemBuilder: (context, index) {
+                      return ResultExamItem(exam: state.dataExam[index].pushExam);
+                    })))
+          ],
+        );
       } else {
         return Container();
       }

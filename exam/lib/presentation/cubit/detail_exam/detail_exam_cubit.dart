@@ -3,15 +3,15 @@ import 'dart:async';
 import 'package:exam/app/static.dart';
 import 'package:exam/data/model/exam/data_exam.dart';
 import 'package:exam/data/model/exam/push_exam.dart';
-import 'package:exam/data/repositories/auth/auth_repo.dart';
 import 'package:exam/domain/repositories/exam/work_exam_repo.dart';
-import 'package:exam/presentation/cubit/work_exam/work_exam_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class WorkExamCubit extends Cubit<WorkExamState> {
+import 'detail_exam_state.dart';
+
+class DetailExamCubit extends Cubit<DetailExamState> {
   final WorkExamRepo workExamRepo;
 
-  WorkExamCubit(this.workExamRepo) : super(const WorkExamState());
+  DetailExamCubit(this.workExamRepo) : super(const DetailExamState());
 
   PushExam initPushExam(DataExam dataExam) {
     List<PushQuestion> pushQuestions = [];

@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'package:exam/domain/repositories/exam/exam_repo.dart';
-import 'package:exam/presentation/cubit/admin_exam/admin_exam_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AdminExamCubit extends Cubit<AdminExamState> {
+import 'exam_state.dart';
+
+class ExamCubit extends Cubit<ExamState> {
   final ExamRepo examRepo;
   StreamSubscription? streamSubscription;
 
-  AdminExamCubit(this.examRepo) : super(const AdminExamState());
+  ExamCubit(this.examRepo) : super(const ExamState());
 
   Future<void> getExam(var data) async {
     try {

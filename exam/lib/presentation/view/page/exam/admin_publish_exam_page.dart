@@ -2,26 +2,32 @@ import 'package:exam/app/const.dart';
 import 'package:exam/presentation/component/components.dart';
 import 'package:exam/presentation/cubit/exam/exam.dart';
 import 'package:exam/presentation/view/page/base_page.dart';
-import 'package:exam/route/route_name.dart';
 import 'package:exam/theme/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AdminExamPage extends BasePage {
-  const AdminExamPage({Key? key}) : super(key: key, title: 'Exam');
+class AdminPublishExamPage extends BasePage {
+  const AdminPublishExamPage({Key? key}) : super(key: key, title: 'Admin');
 
   @override
   State<StatefulWidget> createState() {
-    return _AdminExamPageState();
+    return _AdminPublishExamPageState();
   }
 }
 
-class _AdminExamPageState extends BaseStatePage<AdminExamPage> {
+class _AdminPublishExamPageState extends BaseStatePage<AdminPublishExamPage> {
   late ExamCubit examCubit;
 
   void getExam() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      examCubit.getExam(userRole);
+      examCubit.getExam(adminRole);
+    });
+  }
+
+  void publish(ExamState state) {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      examCubit.publishExam(state.dataExam[0].id, {'pushed': true});
     });
   }
 
@@ -44,9 +50,7 @@ class _AdminExamPageState extends BaseStatePage<AdminExamPage> {
             child: ListView.builder(
                 itemCount: state.dataExam.length,
                 itemBuilder: (context, index) {
-                  return UserExamItem(exam: state.dataExam[index].exam, itemClick: (){
-                    Navigator.of(context).pushNamed(detailResultExamRoute, arguments: state.dataExam[index]);
-                  });
+                  return AdminExamItem(exam: state.dataExam[index].exam, publish: () => publish(state));
                 }));
       } else {
         return Container();

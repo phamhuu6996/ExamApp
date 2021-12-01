@@ -1,6 +1,6 @@
 import 'package:exam/app/const.dart';
 import 'package:exam/presentation/component/components.dart';
-import 'package:exam/presentation/cubit/user_exam/user_exam.dart';
+import 'package:exam/presentation/cubit/exam/exam.dart';
 import 'package:exam/presentation/view/page/base_page.dart';
 import 'package:exam/route/route_name.dart';
 import 'package:exam/theme/theme.dart';
@@ -17,24 +17,24 @@ class UserExamPage extends BasePage {
 }
 
 class _UserExamPageState extends BaseStatePage<UserExamPage> {
-  late UserExamCubit userExamCubit;
+  late ExamCubit examCubit;
 
   void getExam() {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      userExamCubit.getExam(userRole);
+      examCubit.getExam(userRole);
     });
   }
 
   @override
   void initState() {
     super.initState();
-    userExamCubit = BlocProvider.of<UserExamCubit>(context);
+    examCubit = BlocProvider.of<ExamCubit>(context);
     getExam();
   }
 
   @override
   Widget build(BuildContext context) {
-    body = BlocConsumer<UserExamCubit, UserExamState>(builder: (context, state) {
+    body = BlocConsumer<ExamCubit, ExamState>(builder: (context, state) {
       if (state.isLoading) {
         return const Center(child: CircularProgressIndicator());
       }
