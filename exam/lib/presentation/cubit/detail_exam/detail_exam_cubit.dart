@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:exam/app/static.dart';
+import 'package:exam/data/model/exam/detail_exam_model.dart';
 import 'package:exam/domain/entities/exam/data_exam.dart';
 import 'package:exam/domain/entities/exam/detail_exam.dart';
 import 'package:exam/domain/repositories/exam/work_exam_repo.dart';
@@ -16,9 +17,9 @@ class DetailExamCubit extends Cubit<DetailExamState> {
   DetailExam initPushExam(DataExam dataExam) {
     List<DetailQuestion> pushQuestions = [];
     for (var question in dataExam.exam.questions) {
-      pushQuestions.add(DetailQuestion(questionId: question.id, answerId: [], correctAnswerId: question.correctAnswerId));
+      pushQuestions.add(DetailQuestionModel(questionId: question.id, answerId: <String>[], correctAnswerId: question.correctAnswerId));
     }
-    return DetailExam(uid: user!.uid, examId: dataExam.id, questions: pushQuestions, userName: profile?.name??'');
+    return DetailExamModel(uid: user!.uid, examId: dataExam.id, questions: pushQuestions, userName: profile?.name??'');
   }
 
   double score(DetailExam pushExam) {

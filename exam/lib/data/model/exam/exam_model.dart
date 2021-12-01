@@ -39,7 +39,7 @@ class QuestionsModel extends Questions {
         id: json['id'],
         question: json['question'],
         answers: List.from(json['answers']).map((e) => AnswersModel.fromJson(e)).toList(),
-        correctAnswerId: List.from(json['correct_answer_id']));
+        correctAnswerId: List<String>.from(json['correct_answer_id']));
   }
 
   Map<String, dynamic> toJson() {

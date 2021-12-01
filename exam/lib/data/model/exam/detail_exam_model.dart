@@ -1,7 +1,7 @@
 import 'package:exam/domain/entities/exam/detail_exam.dart';
 
 class DetailExamModel extends DetailExam {
-  DetailExamModel({required uid, required examId, required questions, required userName, score = 0})
+  DetailExamModel({required uid, required examId, required questions, required userName, score = 0.0})
       : super(uid: uid, examId: examId, questions: questions, userName: userName, score: score);
 
   Map<String, dynamic> toJson() {
@@ -35,7 +35,7 @@ class DetailQuestionModel extends DetailQuestion {
   factory DetailQuestionModel.fromJson(Map<String, dynamic> json) {
     return DetailQuestionModel(
         questionId: json['question_id'],
-        correctAnswerId: List.from(json['correct_answer_id']),
-        answerId: List.from(json['answer_id']));
+        correctAnswerId: List<String>.from(json['correct_answer_id']),
+        answerId: List<String>.from(json['answer_id']));
   }
 }

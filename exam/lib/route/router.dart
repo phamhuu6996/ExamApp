@@ -24,12 +24,12 @@ class AppRouter {
             builder: (_) =>
                 BlocProvider<HomeCubit>(create: (context) => HomeCubit(getIt<ProfileRepo>()), child: const HomePage()),
             settings: settings);
-      case adminExamRoute:
+      case adminPublishExamRoute:
         return MaterialPageRoute(
             builder: (_) => BlocProvider<ExamCubit>(
-                create: (context) => ExamCubit(getIt<ExamRepo>()), child: const AdminExamPage()),
+                create: (context) => ExamCubit(getIt<ExamRepo>()), child: const AdminPublishExamPage()),
             settings: settings);
-      case resultExamRoute:
+      case adminExamRoute:
         return MaterialPageRoute(
             builder: (_) => BlocProvider<ExamCubit>(
                 create: (context) => ExamCubit(getIt<ExamRepo>()), child: const AdminExamPage()),

@@ -1,5 +1,6 @@
 import 'package:exam/app/const.dart';
 import 'package:exam/app/static.dart';
+import 'package:exam/data/model/profile/profile_model.dart';
 import 'package:exam/domain/entities/profile/data_profile.dart';
 import 'package:exam/domain/entities/profile/profile.dart';
 import 'package:exam/presentation/component/components.dart';
@@ -62,7 +63,7 @@ class _HomePageState extends BaseStatePage<HomePage> {
               CRaiseButton(
                   text: "Commit",
                   function: () => homeCubit.addProfile(
-                      DataProfile(key: user!.uid, profile: Profile(role: 'user', name: nameController.text))))
+                      DataProfile(key: user!.uid, profile: ProfileModel(role: 'user', name: nameController.text))))
             ],
           ),
         );
@@ -81,16 +82,16 @@ class _HomePageState extends BaseStatePage<HomePage> {
                     ? Column(
                         children: [
                           CRaiseButton(
-                              text: "Publish exam!", function: () => Navigator.of(context).pushNamed(adminExamRoute)),
+                              text: "Publish exam!", function: () => Navigator.of(context).pushNamed(adminPublishExamRoute)),
                           const SizedBox(height: 30),
                           CRaiseButton(
-                              text: "Exam result!", function: () => Navigator.of(context).pushNamed(resultExamRoute))
+                              text: "Exam result!", function: () => Navigator.of(context).pushNamed(adminExamRoute))
                         ],
                       )
                     : CRaiseButton(
                         text: "Start now!",
                         function: () => Navigator.of(context)
-                            .pushNamed(state.profile!.profile.role == adminRole ? adminExamRoute : userExamRoute))
+                            .pushNamed(state.profile!.profile.role == adminRole ? adminPublishExamRoute : userExamRoute))
               ],
             ));
       } else {

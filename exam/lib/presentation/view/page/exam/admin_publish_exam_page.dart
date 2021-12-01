@@ -1,4 +1,5 @@
 import 'package:exam/app/const.dart';
+import 'package:exam/domain/entities/exam/data_exam.dart';
 import 'package:exam/presentation/component/components.dart';
 import 'package:exam/presentation/cubit/exam/exam.dart';
 import 'package:exam/presentation/view/page/base_page.dart';
@@ -25,9 +26,9 @@ class _AdminPublishExamPageState extends BaseStatePage<AdminPublishExamPage> {
     });
   }
 
-  void publish(ExamState state) {
+  void publish(DataExam dataExam) {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      examCubit.publishExam(state.dataExam[0].id, {'pushed': true});
+      examCubit.publishExam(dataExam.id, {'pushed': true});
     });
   }
 
@@ -50,7 +51,7 @@ class _AdminPublishExamPageState extends BaseStatePage<AdminPublishExamPage> {
             child: ListView.builder(
                 itemCount: state.dataExam.length,
                 itemBuilder: (context, index) {
-                  return AdminExamItem(exam: state.dataExam[index].exam, publish: () => publish(state));
+                  return AdminExamItem(exam: state.dataExam[index].exam, publish: () => publish(state.dataExam[index]));
                 }));
       } else {
         return Container();
